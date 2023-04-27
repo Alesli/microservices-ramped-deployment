@@ -1,0 +1,8 @@
+FROM postgres:latest
+
+ENV POSTGRES_USER root
+ENV POSTGRES_PASSWORD password
+ENV POSTGRES_DB usersdb
+COPY initUserDB.sql /docker-entrypoint-initdb.d/
+
+EXPOSE 5432
