@@ -1,6 +1,6 @@
---CREATE DATABASE postsdb;
---
---\c postsdb;
+SELECT 'CREATE DATABASE postsdb' WHERE NOT EXISTS (SELECT FROM pg_database WHERE datname = 'postsdb');
+
+\c postsdb;
 
 CREATE TABLE posts (
     id SERIAL PRIMARY KEY,

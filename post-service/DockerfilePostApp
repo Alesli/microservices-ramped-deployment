@@ -2,6 +2,10 @@ FROM adoptopenjdk/openjdk11
 
 WORKDIR /app
 
+ENV DB_USERNAME=root
+ENV DB_PASSWORD=password
+ENV DB_URL=jdbc:postgresql://posts-db:5432/postsdb
+
 COPY target/post-service-1.0.0.jar post-service-1.0.0.jar
 
 EXPOSE 8089

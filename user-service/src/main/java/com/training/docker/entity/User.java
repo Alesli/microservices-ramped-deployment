@@ -21,7 +21,7 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "name_name")
+    @Column(name = "username")
     private String username;
 
     @Column(name = "amount_of_posts")

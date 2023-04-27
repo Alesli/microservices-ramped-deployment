@@ -7,7 +7,7 @@ for users:
 - `docker build -t users-db-image -f DockerfileUserDb .`
 
 for posts
-- `docker build -t i posts-db-image -f DockerfilePostDb .`
+- `docker build -t posts-db-image -f DockerfilePostDb .`
 
 ### Run a container using the following command:
 for users:
