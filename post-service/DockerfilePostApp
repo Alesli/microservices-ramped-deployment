@@ -1,0 +1,9 @@
+FROM adoptopenjdk/openjdk11
+
+WORKDIR /app
+
+COPY target/post-service-1.0.0.jar post-service-1.0.0.jar
+
+EXPOSE 8089
+
+CMD ["java", "-jar", "post-service-1.0.0.jar"]

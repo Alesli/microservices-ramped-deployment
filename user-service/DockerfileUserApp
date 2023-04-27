@@ -1,0 +1,9 @@
+FROM adoptopenjdk/openjdk11
+
+WORKDIR /app
+
+COPY target/user-service-1.0.0.jar user-service-1.0.0.jar
+
+EXPOSE 8088
+
+CMD ["java", "-jar", "user-service-1.0.0.jar"]
