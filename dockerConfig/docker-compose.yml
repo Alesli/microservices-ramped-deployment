@@ -1,29 +1,29 @@
-version: '3'
+version: '3.9'
 
 services:
   users-db:
-    image: users-db-image
+    image: postgres:latest
     container_name: users-db-container
     environment:
-      - ENV POSTGRES_USER=root
-      - ENV POSTGRES_PASSWORD=password
-      - ENV POSTGRES_DB=usersdb
+      POSTGRES_USER: root
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: usersdb
+    volumes:
+      - ./initUserDB.sql:/docker-entrypoint-initdb.d/initUserDB.sql
     ports:
       - "5432:5432"
-#    volumes:
-#      - pgdata:/var/lib/postgresql/data
 
   posts-db:
-    image: posts-db-image
+    image: postgres:latest
     container_name: posts-db-container
     environment:
-      - ENV POSTGRES_USER=root
-      - ENV POSTGRES_PASSWORD=password
-      - ENV POSTGRES_DB=postsdb
+      POSTGRES_USER: root
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: postsdb
     ports:
       - "5433:5432"
-#    volumes:
-#      - pgdata:/var/lib/postgreqsl/data
+    volumes:
+      - ./initPostDB.sql:/docker-entrypoint-initdb.d/initPostDB.sql
 
   user-service:
     image: epamalesiaskarakhod/userapp-image:1.0.0
