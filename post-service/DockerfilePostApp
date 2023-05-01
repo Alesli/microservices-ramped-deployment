@@ -8,6 +8,6 @@ ENV DB_URL=jdbc:postgresql://posts-db:5432/postsdb
 
 COPY target/post-service-1.0.0.jar post-service-1.0.0.jar
 
-EXPOSE 8089
+EXPOSE 8081
 
 CMD ["java", "-jar", "post-service-1.0.0.jar"]

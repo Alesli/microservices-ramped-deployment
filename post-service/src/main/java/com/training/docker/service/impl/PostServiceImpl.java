@@ -2,12 +2,10 @@ package com.training.docker.service.impl;
 
 import com.training.docker.configuration.UserServiceClient;
 import com.training.docker.entity.Post;
-import com.training.docker.entity.User;
 import com.training.docker.repository.PostRepository;
 import com.training.docker.service.PostService;
 import com.training.docker.utils.UserNotFoundException;
 import lombok.AllArgsConstructor;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
