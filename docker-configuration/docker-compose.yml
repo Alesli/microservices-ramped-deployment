@@ -33,7 +33,7 @@ services:
       - ENV DB_PASSWORD=password
       - ENV DB_URL=jdbc:postgresql://users-db:5432/usersdb
     ports:
-      - "8088:8088"
+      - "8088:8080"
     depends_on:
       - users-db
 
@@ -45,6 +45,6 @@ services:
       - ENV DB_PASSWORD=password
       - ENV DB_URL=jdbc:postgresql://posts-db:5432/postsdb
     ports:
-      - "8089:8089"
+      - "8089:8080"
     depends_on:
       - posts-db

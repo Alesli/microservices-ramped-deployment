@@ -3,6 +3,7 @@ package com.training.docker.service.impl;
 import com.training.docker.entity.User;
 import com.training.docker.repository.UserRepository;
 import com.training.docker.service.UserService;
+import com.training.docker.utils.UserNotFoundException;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -37,7 +38,7 @@ public class UserServiceImpl implements UserService {
             user.setId(existingUser.get().getId());
             return repository.save(user);
         }
-        return null;
+        throw new UserNotFoundException(id);
     }
 
     @Override
@@ -47,7 +48,7 @@ public class UserServiceImpl implements UserService {
             repository.deleteById(id);
             return true;
         } else {
-            return false;
+            throw new UserNotFoundException(id);
         }
     }
 
