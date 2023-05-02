@@ -1,0 +1,50 @@
+version: '3.9'
+
+services:
+  users-db:
+    image: postgres:latest
+    container_name: users-db-container
+    environment:
+      POSTGRES_USER: root
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: usersdb
+    volumes:
+      - ./initUserDB.sql:/docker-entrypoint-initdb.d/initUserDB.sql
+    ports:
+      - "5432:5432"
+
+  posts-db:
+    image: postgres:latest
+    container_name: posts-db-container
+    environment:
+      POSTGRES_USER: root
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: postsdb
+    ports:
+      - "5433:5432"
+    volumes:
+      - ./initPostDB.sql:/docker-entrypoint-initdb.d/initPostDB.sql
+
+  user-service:
+    image: epamalesiaskarakhod/userapp-image:1.0.0
+    container_name: userapp-container
+    environment:
+      - ENV DB_USERNAME=root
+      - ENV DB_PASSWORD=password
+      - ENV DB_URL=jdbc:postgresql://users-db:5432/usersdb
+    ports:
+      - "8088:8080"
+    depends_on:
+      - users-db
+
+  post-service:
+    image: epamalesiaskarakhod/postapp-image:1.0.0
+    container_name: postapp-container
+    environment:
+      - ENV DB_USERNAME=root
+      - ENV DB_PASSWORD=password
+      - ENV DB_URL=jdbc:postgresql://posts-db:5432/postsdb
+    ports:
+      - "8089:8080"
+    depends_on:
+      - posts-db
