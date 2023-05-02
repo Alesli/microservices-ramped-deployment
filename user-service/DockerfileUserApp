@@ -1,0 +1,13 @@
+FROM adoptopenjdk/openjdk11
+
+WORKDIR /app
+
+ENV DB_USERNAME=root
+ENV DB_PASSWORD=password
+ENV DB_URL=jdbc:postgresql://users-db:5432/usersdb
+
+COPY target/user-service-1.0.0.jar user-service-1.0.0.jar
+
+EXPOSE 8080
+
+CMD ["java", "-jar", "user-service-1.0.0.jar"]
