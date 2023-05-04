@@ -1,4 +1,4 @@
-FROM adoptopenjdk/openjdk11
+FROM adoptopenjdk/openjdk11 AS builder
 
 WORKDIR /app
 
@@ -6,7 +6,22 @@ ENV DB_USERNAME=root
 ENV DB_PASSWORD=password
 ENV DB_URL=jdbc:postgresql://users-db:5432/usersdb
 
-COPY target/user-service-1.0.0.jar user-service-1.0.0.jar
+# Create a non-root user
+RUN addgroup -S usergr && adduser -S myuser -G usergr
+
+COPY . .
+
+# Change to the non-root user
+USER myuser
+
+#COPY target/user-service-1.0.0.jar user-service-1.0.0.jar
+RUN ./mvnw clean package
+
+FROM adoptopenjdk/openjdk11
+
+WORKDIR /app
+
+COPY --from=builder /app/target/user-service-1.0.0.jar user-service-1.0.0.jar
 
 EXPOSE 8080
 
