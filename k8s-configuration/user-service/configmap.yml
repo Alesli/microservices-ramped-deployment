@@ -1,0 +1,31 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: k8s-program
+
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: user-env-config
+  namespace: k8s-program
+data:
+  userName: 'root'
+  password: 'password'
+  dbUrl: 'jdbc:postgresql://users-db:5432/usersdb'
+
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: initdb
+  namespace: k8s-program
+data:
+  initUserDB.sql: |
+    SELECT 'CREATE DATABASE usersdb' WHERE NOT EXISTS (SELECT FROM pg_database WHERE datname = 'usersdb');
+    \c usersdb;
+    CREATE TABLE users (
+      id SERIAL PRIMARY KEY,
+      username VARCHAR(255) NOT NULL UNIQUE,
+      amount_of_posts BIGINT DEFAULT 0
+    );
