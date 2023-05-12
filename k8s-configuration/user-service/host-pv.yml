@@ -1,0 +1,14 @@
+piVersion: v1
+kind: PersistentVolume
+metadata:
+  name: user-host-pv
+spec:
+  capacity:
+    storage: 1Gi
+  volumeMode: Filesystem
+  storageClassName: hostpath
+  accessModes:
+    - ReadWriteOnce
+  hostPath:
+    path: /data
+    type: DirectoryOrCreate
