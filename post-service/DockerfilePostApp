@@ -2,11 +2,6 @@ FROM adoptopenjdk/openjdk11
 
 WORKDIR /app
 
-ENV DB_USERNAME=root
-ENV DB_PASSWORD=password
-ENV DB_URL=jdbc:postgresql://posts-db:5432/postsdb
-ENV USER_URL=user-service
-
 # Create a non-root user
 RUN groupadd -r usergr && useradd -r -g usergr myuser
 
@@ -16,7 +11,5 @@ COPY . .
 USER myuser
 
 COPY target/post-service-1.0.0.jar post-service-1.0.0.jar
-
-EXPOSE 8081
 
 CMD ["java", "-jar", "post-service-1.0.0.jar"]
