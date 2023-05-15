@@ -45,6 +45,7 @@ services:
       - ENV DB_USERNAME=root
       - ENV DB_PASSWORD=password
       - ENV DB_URL=jdbc:postgresql://posts-db:5432/postsdb
+      - ENV USER_URL=jdbc:postgresql://posts-db:5432/postsdb
     ports:
       - "8089:8080"
     depends_on:

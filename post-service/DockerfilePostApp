@@ -5,7 +5,7 @@ WORKDIR /app
 ENV DB_USERNAME=root
 ENV DB_PASSWORD=password
 ENV DB_URL=jdbc:postgresql://posts-db:5432/postsdb
-ENV USER_URL=userapp-container
+ENV USER_URL=user-service
 
 # Create a non-root user
 RUN groupadd -r usergr && useradd -r -g usergr myuser

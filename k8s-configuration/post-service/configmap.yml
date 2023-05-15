@@ -13,13 +13,13 @@ data:
   userName: 'root'
   password: 'password'
   dbUrl: 'jdbc:postgresql://posts-db:5432/postsdb'
-  userUrl: 'user-app'
+  userUrl: 'http://userapp-container:8080'
 
 ---
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: init-script
+  name: initdb
   namespace: k8s-program
 data:
   initPostDB.sql: |
