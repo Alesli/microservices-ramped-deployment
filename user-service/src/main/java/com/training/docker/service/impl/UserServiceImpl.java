@@ -36,6 +36,7 @@ public class UserServiceImpl implements UserService {
         Optional<User> existingUser = repository.findById(id);
         if (existingUser.isPresent()) {
             user.setId(existingUser.get().getId());
+            user.setAmountOfPosts(existingUser.get().getAmountOfPosts());
             return repository.save(user);
         }
         throw new UserNotFoundException(id);

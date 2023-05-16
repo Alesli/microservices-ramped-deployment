@@ -1,27 +1,15 @@
-FROM adoptopenjdk/openjdk11 AS builder
+FROM adoptopenjdk/openjdk11
 
 WORKDIR /app
 
-ENV DB_USERNAME=root
-ENV DB_PASSWORD=password
-ENV DB_URL=jdbc:postgresql://posts-db:5432/postsdb
-
 # Create a non-root user
-RUN addgroup -S usergr && adduser -S myuser -G usergr
+RUN groupadd -r usergr && useradd -r -g usergr myuser
 
 COPY . .
 
 # Change to the non-root user
 USER myuser
 
-RUN ./mvnw clean package
-
-FROM adoptopenjdk/openjdk11
-
-WORKDIR /app
-
-COPY --from=builder /app/target/post-service-1.0.0.jar post-service-1.0.0.jar
-
-EXPOSE 8081
+COPY target/post-service-1.0.0.jar post-service-1.0.0.jar
 
 CMD ["java", "-jar", "post-service-1.0.0.jar"]

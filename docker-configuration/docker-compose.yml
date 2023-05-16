@@ -29,9 +29,10 @@ services:
     image: epamalesiaskarakhod/userapp-image:1.0.0
     container_name: userapp-container
     environment:
-      - ENV DB_USERNAME=root
-      - ENV DB_PASSWORD=password
-      - ENV DB_URL=jdbc:postgresql://users-db:5432/usersdb
+      DB_USERNAME: root
+      DB_PASSWORD: password
+      DB_HOST: users-db
+      DB_PORT: 5432
     ports:
       - "8088:8080"
     depends_on:
@@ -41,9 +42,11 @@ services:
     image: epamalesiaskarakhod/postapp-image:1.0.0
     container_name: postapp-container
     environment:
-      - ENV DB_USERNAME=root
-      - ENV DB_PASSWORD=password
-      - ENV DB_URL=jdbc:postgresql://posts-db:5432/postsdb
+      DB_USERNAME: root
+      DB_PASSWORD: password
+      DB_HOST: posts-db
+      DB_PORT: 5432
+      USER_HOST: userapp-container
     ports:
       - "8089:8080"
     depends_on:
