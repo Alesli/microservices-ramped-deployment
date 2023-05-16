@@ -12,7 +12,8 @@ metadata:
 data:
   userName: 'root'
   password: 'password'
-  dbUrl: 'jdbc:postgresql://users-db:5432/usersdb'
+  host: 'users-db'
+  port: '5432'
 
 ---
 apiVersion: v1
