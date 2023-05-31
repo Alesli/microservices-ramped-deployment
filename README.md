@@ -403,3 +403,7 @@ When a new post is created or deleted, `amountOfPosts` for user should be change
 3) Create a docker-compose file that would run all containers for your microservice application. Add init scripts for the database to run when container starts up. Once you have a compose file, you can create and start your application containers with a single command: `docker-compose up`.
 
 _Note_: Set Database url, username and password via environment variables for your database and application containers.
+
+echo -n root | base64
+echo -n password | base64
+
