@@ -25,6 +25,8 @@ public class Post {
 
     private String text;
 
+    private String topic;
+
     @Column(name = "posted_at", columnDefinition = "DATE")
     private LocalDate postedAt;
 

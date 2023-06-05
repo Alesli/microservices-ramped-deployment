@@ -10,8 +10,6 @@ metadata:
   name: user-env-config
   namespace: k8s-program
 data:
-  userName: 'root'
-  password: 'password'
   host: 'users-db'
   port: '5432'
 
