@@ -10,8 +10,6 @@ metadata:
   name: post-env-config
   namespace: k8s-program
 data:
-  userName: 'root'
-  password: 'password'
   host: 'posts-db'
   port: '5432'
 
@@ -29,5 +27,6 @@ data:
       id SERIAL PRIMARY KEY,
       user_id BIGINT NOT NULL,
       text TEXT NOT NULL,
+      text TOPIC NOT NULL,
       posted_at DATE NOT NULL
     );
