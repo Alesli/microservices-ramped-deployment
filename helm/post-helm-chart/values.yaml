@@ -1,0 +1,17 @@
+namespace: k8s-program
+
+postApp:
+  replicaCount: 2
+  image:
+    repository: epamalesiaskarakhod/postapp-image:2.0.0
+    pullPolicy: Always
+  service:
+    type: LoadBalancer
+    port: 8080
+
+postDB:
+  replicaCount: 1
+  service:
+    port: 5432
+    host: posts-db
+
