@@ -12,11 +12,11 @@ In this module you will learn how to attach persistent storages to your applicat
 2. Add helm chart to deploy your applications. Make replica-count and namespace a helm values.
 3. Add helm values file to store default values for helm variables.
 4. Run helm using `helm install` command to deploy applications with default helm variables. Make sure, your applications are up and running.
- - `helm upgrade --install post-app-release ./post-helm-chart `
- - `helm install user-app-release ./user-helm-chart --name user-app-release`
+ - `helm install postapp ./post-helm-chart `
+ - `helm install userapp ./user-helm-chart `
 5. Run helm once again, but this time set namespace and replica-count for `helm intall` to non-default values.
-`helm template . --set namespace=k8s-program`
-`helm template . --set postApp.replicaCount=2`
+`helm template ./post-helm-chart --set namespace=k8s-program`
+`helm template ./post-helm-chart --set postApp.replicaCount=2`
 
 ## Sub-task 2: Helm chart helpers
 1. Create helm `_helpers.tpl` file and define next labels there:

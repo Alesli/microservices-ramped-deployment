@@ -1,14 +1,8 @@
 apiVersion: v1
-kind: Namespace
-metadata:
-  name: k8s-program
-
----
-apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
   name: users-pvc
-  namespace: k8s-program
+  namespace: {{ .Values.namespace }}
 spec:
   accessModes:
     - ReadWriteOnce
@@ -22,7 +16,7 @@ apiVersion: v1
 kind: PersistentVolume
 metadata:
   name: users-pv
-  namespace: k8s-program
+  namespace: {{ .Values.namespace }}
 spec:
   capacity:
     storage: 1Gi
