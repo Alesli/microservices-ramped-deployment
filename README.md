@@ -15,8 +15,9 @@ In this module you will learn how to attach persistent storages to your applicat
  - `helm install postapp ./post-helm-chart `
  - `helm install userapp ./user-helm-chart `
 5. Run helm once again, but this time set namespace and replica-count for `helm intall` to non-default values.
-`helm template ./post-helm-chart --set namespace=k8s-program`
-`helm template ./post-helm-chart --set postApp.replicaCount=2`
+ `helm install postapp ./post-helm-chart `
+`helm template ./post-helm-chart --namespace=k8s-program`
+`helm template ./post-helm-chart -- set postApp.replicaCount=2`
 
 ## Sub-task 2: Helm chart helpers
 1. Create helm `_helpers.tpl` file and define next labels there:
