@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: initdb
+  name: post-initdb
   namespace: {{ .Release.Namespace }}
   labels:
     date: {{ include "post-helm-chart.labels.date" . }}
