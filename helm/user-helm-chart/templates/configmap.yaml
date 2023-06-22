@@ -2,7 +2,7 @@ apiVersion: v1
 kind: ConfigMap
 metadata:
   name: initdb
-  namespace: k8s-program
+  namespace: {{ .Release.Namespace }}
 data:
   initUserDB.sql: |
     SELECT 'CREATE DATABASE usersdb' WHERE NOT EXISTS (SELECT FROM pg_database WHERE datname = 'usersdb');
