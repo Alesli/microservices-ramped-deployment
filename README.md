@@ -1,4 +1,4 @@
-# Table of Content
+# Kubernetes Helm
 
 - [What to do](#what-to-do)
 - [Sub-task 1: Helm charts](#sub-task-1--helm-chart-default-variables)
@@ -15,7 +15,7 @@ In this module you will learn how to attach persistent storages to your applicat
  - `helm install postapp ./post-helm-chart `
  - `helm install userapp ./user-helm-chart `
 5. Run helm once again, but this time set namespace and replica-count for `helm intall` to non-default values.
- - `helm install postapp ./post-helm-chart `
+ - `helm install postapp ./post-helm-chart --namespace k8s-program --create-namespace --wait `
  - `helm template ./post-helm-chart --namespace=k8s-program`
  - `helm template ./post-helm-chart -- set postApp.replicaCount=2`
 
