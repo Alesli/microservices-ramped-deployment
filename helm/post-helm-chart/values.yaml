@@ -12,11 +12,3 @@ postDB:
   service:
     port: 5432
     host: posts-db
-
-#namespaces:
-#  - namespace1
-#helmResourcePolicy: keep
-#annotations:
-#  certmanager.k8s.io/disable-validation: true
-#labels:
-#  app.kubernetes.io/managed-by: Helm
