@@ -4,7 +4,7 @@ postApp:
     repository: epamalesiaskarakhod/postapp-image:2.0.0
     pullPolicy: Always
   service:
-    type: LoadBalancer
+    type: ClusterIP
     port: 8080
 
 postDB:
