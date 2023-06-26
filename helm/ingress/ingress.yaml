@@ -11,23 +11,20 @@ metadata:
 spec:
   ingressClassName: nginx
   rules:
-    - host: k8s.ingress.user-service
+    - host: k8s.ingress.com
       http:
         paths:
-            - path: /api/v1(/|$)(.*)
+            - path: /user-service(/|$)(.*)
               pathType: ImplementationSpecific
               backend:
                 service:
                   name: user-app
                   port:
                     number: 8088
-    - host: k8s.ingress.post-service
-      http:
-        paths:
-          - path: /api/v2(/|$)(.*)
-            pathType: ImplementationSpecific
-            backend:
-              service:
-                name: post-app
-                port:
-                  number: 8089
+            - path: /post-service(/|$)(.*)
+              pathType: ImplementationSpecific
+              backend:
+                service:
+                  name: post-app
+                  port:
+                    number: 8089
